@@ -22,10 +22,10 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore SpeakingRoses.sln
+        run: dotnet restore SpeakingRoses/SpeakingRoses.sln
 
       - name: Build
-        run: dotnet build SpeakingRoses.sln --no-restore
+        run: dotnet build SpeakingRoses/SpeakingRoses.sln --no-restore
 
       - name: Run tests
         run: dotnet test SpeakingRoses/Tests/Tests.csproj
