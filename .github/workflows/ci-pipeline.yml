@@ -1,4 +1,4 @@
-name: C# CI Pipeline
+name: CI Pipeline
 
 on:
   pull_request:
@@ -13,16 +13,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: List files in repository
+        run: ls -R
+
       - name: Set up .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore SpeakingRoses.sln
 
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build SpeakingRoses.sln --no-restore
 
       - name: Run tests
-        run: dotnet test
+        run: dotnet test Tests/Tests.csproj
