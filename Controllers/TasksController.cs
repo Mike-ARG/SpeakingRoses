@@ -68,6 +68,8 @@ namespace SpeakingRoses.Controllers
                 return NotFound();
             }
 
+
+            // Adding this comment to test the new pipeline
             existingTask.Title = updatedTask.Title;
             existingTask.Description = updatedTask.Description;
             existingTask.Status = updatedTask.Status;
