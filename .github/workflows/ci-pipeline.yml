@@ -26,20 +26,11 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
-    - name: Confirm .NET SDK version
-      run: dotnet --version
-
     - name: Restore dependencies
-      run: |
-        echo "Running dotnet restore in SpeakingRoses"
-        dotnet restore SpeakingRoses/SpeakingRoses.sln
+      run: dotnet restore ./SpeakingRoses/SpeakingRoses.sln
 
     - name: Build solution
-      run: |
-        echo "Building solution in SpeakingRoses"
-        dotnet build SpeakingRoses/SpeakingRoses.sln --no-restore --configuration Release
+      run: dotnet build ./SpeakingRoses/SpeakingRoses.sln --no-restore --configuration Release
 
     - name: Run tests
-      run: |
-        echo "Running tests in Tests project"
-        dotnet test Tests/Tests.csproj --no-build --verbosity normal --configuration Release
+      run: dotnet test ./Tests/Tests.csproj --no-build --verbosity normal --configuration Release
