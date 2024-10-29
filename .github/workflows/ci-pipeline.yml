@@ -22,13 +22,10 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore
-      working-directory: SpeakingRoses
+      run: dotnet restore SpeakingRoses/SpeakingRoses.csproj
 
     - name: Build solution
-      run: dotnet build --no-restore --configuration Release
-      working-directory: SpeakingRoses
+      run: dotnet build SpeakingRoses/SpeakingRoses.csproj --no-restore --configuration Release
 
     - name: Run tests
-      run: dotnet test --no-build --verbosity normal --configuration Release
-      working-directory: SpeakingRoses/Tests
+      run: dotnet test SpeakingRoses/Tests/Tests.csproj --no-build --verbosity normal --configuration Release
