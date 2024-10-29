@@ -19,13 +19,13 @@ jobs:
     - name: Set up .NET
       uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: '8.0.x'
+        dotnet-version: '7.0.x' # Specify the correct .NET version for your project
 
     - name: Restore dependencies
-      run: dotnet restore SpeakingRoses/SpeakingRoses.csproj
+      run: dotnet restore SpeakingRoses/SpeakingRoses.sln # Point directly to the solution file
 
     - name: Build solution
-      run: dotnet build SpeakingRoses/SpeakingRoses.csproj --no-restore --configuration Release
+      run: dotnet build SpeakingRoses/SpeakingRoses.sln --no-restore --configuration Release
 
     - name: Run tests
       run: dotnet test SpeakingRoses/Tests/Tests.csproj --no-build --verbosity normal --configuration Release
