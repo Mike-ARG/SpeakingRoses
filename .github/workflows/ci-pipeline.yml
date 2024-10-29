@@ -23,9 +23,12 @@ jobs:
 
     - name: Restore dependencies
       run: dotnet restore
+      working-directory: SpeakingRoses
 
     - name: Build solution
       run: dotnet build --no-restore --configuration Release
+      working-directory: SpeakingRoses
 
     - name: Run tests
       run: dotnet test --no-build --verbosity normal --configuration Release
+      working-directory: SpeakingRoses/Tests
