@@ -16,9 +16,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Display directory structure for debugging
+    - name: Display root directory structure for debugging
       run: |
-        echo "Listing root directory:"
+        echo "Root directory structure:"
         ls -R
 
     - name: Set up .NET
@@ -28,12 +28,9 @@ jobs:
 
     - name: Restore dependencies
       run: dotnet restore SpeakingRoses/SpeakingRoses.sln
-      working-directory: Technical-Test-Speaking-Roses
 
     - name: Build solution
       run: dotnet build SpeakingRoses/SpeakingRoses.sln --no-restore --configuration Release
-      working-directory: Technical-Test-Speaking-Roses
 
     - name: Run tests
       run: dotnet test Tests/Tests.csproj --no-build --verbosity normal --configuration Release
-      working-directory: Technical-Test-Speaking-Roses
