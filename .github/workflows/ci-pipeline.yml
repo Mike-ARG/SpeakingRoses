@@ -12,10 +12,6 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: ${{ github.workspace }}
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -31,10 +27,13 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore SpeakingRoses/SpeakingRoses.sln
+      working-directory: ${{ github.workspace }}/SpeakingRoses
+      run: dotnet restore SpeakingRoses.sln
 
     - name: Build solution
-      run: dotnet build SpeakingRoses/SpeakingRoses.sln --no-restore --configuration Release
+      working-directory: ${{ github.workspace }}/SpeakingRoses
+      run: dotnet build SpeakingRoses.sln --no-restore --configuration Release
 
     - name: Run tests
-      run: dotnet test Tests/Tests.csproj --no-build --verbosity normal --configuration Release
+      working-directory: ${{ github.workspace }}/Tests
+      run: dotnet test Tests.csproj --no-build --verbosity normal --configuration Release
