@@ -16,16 +16,24 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Display directory structure for debugging
+      run: |
+        echo "Listing root directory:"
+        ls -R
+
     - name: Set up .NET
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: '8.0.x' # Specify the correct .NET version for your project
 
     - name: Restore dependencies
-      run: dotnet restore Technical-Test-Speaking-Roses/SpeakingRoses/SpeakingRoses.sln # Adjusted to the full path of the solution file
+      run: dotnet restore SpeakingRoses/SpeakingRoses.sln
+      working-directory: Technical-Test-Speaking-Roses
 
     - name: Build solution
-      run: dotnet build Technical-Test-Speaking-Roses/SpeakingRoses/SpeakingRoses.sln --no-restore --configuration Release
+      run: dotnet build SpeakingRoses/SpeakingRoses.sln --no-restore --configuration Release
+      working-directory: Technical-Test-Speaking-Roses
 
     - name: Run tests
-      run: dotnet test Technical-Test-Speaking-Roses/Tests/Tests.csproj --no-build --verbosity normal --configuration Release
+      run: dotnet test Tests/Tests.csproj --no-build --verbosity normal --configuration Release
+      working-directory: Technical-Test-Speaking-Roses
